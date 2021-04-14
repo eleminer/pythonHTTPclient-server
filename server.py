@@ -17,10 +17,9 @@ def main():
 
         if userId!=None and userData!=None:
             if userId.isnumeric()==True:
-                if int(userId)==adminId and userData=="recieve":
-                    print("recieveMode")
+                if int(userId)==adminId:
+                    print("pass")
                 else:
-                    print("writeMode")
                     f = open(userId+".txt", "a")
                     f.write(userData+"\n")
                     f.close()

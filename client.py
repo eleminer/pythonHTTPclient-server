@@ -1,7 +1,6 @@
 import requests
 import json
 
-
 def RepresentsInt(s):
     try: 
         int(s)
@@ -9,7 +8,7 @@ def RepresentsInt(s):
     except ValueError:
         return False
 
-print("Client Software")
+print("client software")
 IdInput= raw_input('ID:')
 StringInput= raw_input('Data:')
 if RepresentsInt(IdInput):
@@ -18,7 +17,13 @@ if RepresentsInt(IdInput):
     Data = {'userId': str(IdInput),
     'userData': str(StringInput),
     }
-    req = requests.post(url, headers=headers, data=json.dumps(Data))
-    print(req.status_code)
+    try:
+        req = requests.post(url, headers=headers, data=json.dumps(Data))
+        if req.status_code==200:
+            print("successful")
+        else:
+            print("something went wrong")
+    except:
+        print("server not reachable")
 else:
-    print("Eingabe nicht korrekt")
+    print("Input not correct")
