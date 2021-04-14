@@ -12,7 +12,6 @@ def main():
         if 'userId' in request_data:
             userId = request_data['userId']
             print("userID:"+userId)
-
         if 'userData' in request_data:
             userData = request_data['userData']
             print("userData:"+userData)
@@ -21,7 +20,6 @@ def main():
             if userId.isnumeric()==True:
                 if int(userId)==adminId and userData=="recieve":
                     print("recieveMode")
-                    
                 else:
                     print("writeMode")
                     f = open(userId+".txt", "a")
