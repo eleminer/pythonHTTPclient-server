@@ -10,7 +10,7 @@ def RepresentsInt(s):
 
 print("client software")
 IdInput= raw_input('ID:')
-StringInput= raw_input('Data:')
+StringInput= raw_input('Data or read-id:')
 if RepresentsInt(IdInput):
     url = 'http://182.0.0.111:5000/'
     headers = {'Content-Type': 'application/json'}
@@ -21,6 +21,7 @@ if RepresentsInt(IdInput):
         req = requests.post(url, headers=headers, data=json.dumps(Data))
         if req.status_code==200:
             print("successful")
+            print(req.content)
         else:
             print("something went wrong")
     except:
