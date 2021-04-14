@@ -4,7 +4,6 @@ adminId=2
 @app.route('/', methods=['POST'])
 def main():
     request_data = request.get_json()
-
     userId = None
     userData = None
 
