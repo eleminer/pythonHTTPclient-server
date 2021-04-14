@@ -6,7 +6,6 @@ Dieses Repository beinhaltet Python Code für Server-/Clientverbindungen.
   Nachrichten über HTTP and einen Server (HTTP-POST).
 
 Die Nachrichten sind einfache Strings + die ID.
-(die ID ist fest codiert in der URL)
 
 ### Server
 Der Server loggt die Nachrichten in einem File.
@@ -14,16 +13,22 @@ Jedem Client ist ein eigenes File zugeordnet, dem eine neue Zeile hinzugefügt w
 eine Nachricht ankommt.
 
 ### Clients (Strings empfangen)
-Ein weiterer Client kann über HTTP-GET die Files anfragen.
- 
+Ein weiterer Client kann die Files anfragen.
+In meinem Beispiel ist dies der Client mit der ID=2.
+
+Als String wird die Client Nummer angegeben, von welchem man das File lesen möchte!
  
 ## Info
-Erstmal nur normales unverschlüsseltes HTTP.
+Erstmal nur normales (unverschlüsseltes) HTTP.
 
-Paper:
+Papers:
 
 -Clients:
 https://docs.python-requests.org/en/master/
  
 -Server:
 https://flask.palletsprojects.com/en/1.1.x/
+
+Server                     | Client 
+:-------------------------:|:-------------------------:
+<img src="readmePictures/server.png" width="500">  |  <img src="readmePictures/client.png" width="500">
