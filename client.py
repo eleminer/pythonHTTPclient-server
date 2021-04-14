@@ -9,8 +9,8 @@ def RepresentsInt(s):
         return False
 
 print("client software")
-IdInput= raw_input('ID:')
-StringInput= raw_input('Data or read-id:')
+IdInput= input('ID:')
+StringInput= input('Data or read-id:')
 if RepresentsInt(IdInput):
     url = 'http://182.0.0.111:5000/'
     headers = {'Content-Type': 'application/json'}
@@ -20,8 +20,15 @@ if RepresentsInt(IdInput):
     try:
         req = requests.post(url, headers=headers, data=json.dumps(Data))
         if req.status_code==200:
-            print("successful")
-            print(req.content)
+            if str(req.content)=="b'File not found'":
+                print("File not found")
+            elif str(req.content)=="b'userId is not numeric'":
+                print("UserId is not numeric")
+            elif str(req.content)=="b''":
+                pass
+            else:
+                content=str(req.text)
+                print(content)
         else:
             print("something went wrong")
     except:

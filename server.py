@@ -10,21 +10,20 @@ def main():
     if request_data:
         if 'userId' in request_data:
             userId = request_data['userId']
-            print("userID:"+userId)
         if 'userData' in request_data:
             userData = request_data['userData']
-            print("userData:"+userData)
         if userId!=None and userData!=None:
             if userId.isnumeric()==True:
                 if int(userId)==adminId:
                     try:
-                        fn=open(userData+".txt","U")
-                        return fn.read()
+                        with open(userData+".txt","r") as fn:
+                            return fn.read()
                     except IOError: 
-                        print ("Error: File does not appear to exist.")
                         return 'File not found'
                 else:
                     f = open(userId+".txt", "a")
                     f.write(userData+"\n")
                     f.close()
-    return 'I have no more data for you'
+            else:
+                return 'userId is not numeric'
+    return ''
