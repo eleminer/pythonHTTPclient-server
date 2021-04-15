@@ -2,7 +2,7 @@ from flask import Flask, request, Response
 app = Flask(__name__)
 adminId=2
 @app.route('/', methods=['POST'])
-def main():
+def root_post_handle():
     request_data = request.get_json()
     userId = None
     userData = None
@@ -21,9 +21,8 @@ def main():
                     except IOError: 
                         return 'File not found'
                 else:
-                    f = open(userId+".txt", "a")
-                    f.write(userData+"\n")
-                    f.close()
+                    with open(userId+".txt", "a") as f:
+                        f.write(f"{userData}\n")
             else:
                 return 'userId is not numeric'
     return ''
