@@ -1,17 +1,16 @@
-from flask import Flask, request, Response
+from flask import Flask, request
 app = Flask(__name__)
 adminId=2
-@app.route('/', methods=['POST'])
-def root_post_handle():
-    request_data = request.get_json()
+@app.route('/<id_user>')
+def root_post_handle(id_user):
     userId = None
     userData = None
 
-    if request_data:
-        if 'userId' in request_data:
-            userId = request_data['userId']
-        if 'userData' in request_data:
-            userData = request_data['userData']
+    if request.args.get("data")!=None:
+        userData = request.args.get("data")
+        userId = id_user
+        print("ID:"+userId)
+        print("String:"+userData)
         if userId!=None and userData!=None:
             if userId.isnumeric()==True:
                 if int(userId)==adminId:
@@ -25,6 +24,9 @@ def root_post_handle():
                         f.write(f"{userData}\n")
             else:
                 return 'userId is not numeric'
+    else:
+        return 'parameter missing'
+
     return ''
 
 if __name__ == "__main__":

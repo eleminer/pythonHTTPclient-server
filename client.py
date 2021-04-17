@@ -1,5 +1,4 @@
 import requests
-import json
 
 def RepresentsInt(s):
     try: 
@@ -12,18 +11,17 @@ print("client software")
 IdInput= input('ID:')
 StringInput= input('Data or read-id:')
 if RepresentsInt(IdInput):
-    url = 'http://182.0.0.111:5000/'
-    headers = {'Content-Type': 'application/json'}
-    Data = {'userId': str(IdInput),
-    'userData': str(StringInput),
-    }
+    url = 'http://182.0.0.111/'
+    payload = {'data': StringInput}
     try:
-        req = requests.post(url, headers=headers, data=json.dumps(Data))
+        req = requests.get(url+IdInput,params=payload)
         if req.status_code==200:
             if str(req.content)=="b'File not found'":
                 print("File not found")
             elif str(req.content)=="b'userId is not numeric'":
                 print("UserId is not numeric")
+            elif str(req.content)=="b'parameter missing'":
+                print("Parameter missing")
             elif str(req.content)=="b''":
                 pass
             else:
