@@ -1,5 +1,5 @@
 import requests
-IdInput=2
+IdInput=0
 def RepresentsInt(s):
     try: 
         int(s)

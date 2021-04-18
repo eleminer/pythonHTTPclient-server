@@ -14,7 +14,7 @@ eine Nachricht ankommt.
 
 ### Clients (Strings empfangen)
 Ein weiterer Client kann die Files anfragen.
-In meinem Beispiel ist dies der Client mit der ID=2.
+In meinem Beispiel ist dies der Client mit der ID=0.
 Dies kann im Server-Code, in einer globalen Variable, geändert werden.
 
 Als String wird die Client Nummer angegeben, von welchem man das File lesen möchte!
