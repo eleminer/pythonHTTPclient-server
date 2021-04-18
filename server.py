@@ -1,6 +1,6 @@
 from flask import Flask, request
 app = Flask(__name__)
-adminId=2
+adminId=0
 @app.route('/<id_user>')
 def root_post_handle(id_user):
     userId = None
@@ -31,3 +31,5 @@ def root_post_handle(id_user):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, threaded=True)
+
+    
