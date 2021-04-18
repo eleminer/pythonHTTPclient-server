@@ -61,7 +61,7 @@ def eachclient(clientID):
     print("ID:" + str(clientID) + " took " + str(millis() - start_time) + " ms")
 
 def readingeachclientfile(clientID):
-    global errorCount
+    global errorCount, adminId
     content=sending(str(adminId), str(clientID))
     print(content)
     if content ==str(b'0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n'):
