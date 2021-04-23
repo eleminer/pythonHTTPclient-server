@@ -20,7 +20,7 @@ def root_post_handle(user_id):
     user_data = request.headers.get('user_data')
     if user_data is not None and user_id.isdigit():
         count = 0
-        maxTries = 3
+        maxTries = 10
         while True:
             try:
                 with open(f"{user_id}.txt", "a") as f:
@@ -31,7 +31,7 @@ def root_post_handle(user_id):
                     return 'service unavailable', 503
                 else:
                     count += 1
-                    sleep(2)
+                    sleep(0.10)
     else:
         return 'bad request', 400
 
