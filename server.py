@@ -1,13 +1,29 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
-@app.route('/<id_user>', methods=['GET'])
-def root_post_handle(id_user):
-    if request.args.get("data") != None:
-        userData = request.args.get("data")
-        print(userData)
+
+@app.route('/<file_number>', methods=['GET'])
+def root_get_handle(file_number):
+    if file_number.isdigit():
+        try:
+            with open(f"{file_number}.txt", "r") as f:
+                return f.read()
+        except IOError:
+            return 'file not found!', 400
     else:
-        return 'parameter missing'
+        return 'bad request!', 400
+
+
+@app.route('/<user_id>', methods=['POST'])
+def root_post_handle(user_id):
+    user_data = request.headers.get('user_data')
+
+    if user_data is not None and user_id.isdigit():
+        with open(f"{user_id}.txt", "a") as f:
+            f.write(f"{user_data}\n")
+        return 'ok'
+    else:
+        return 'bad request', 400
 
 
 if __name__ == "__main__":
