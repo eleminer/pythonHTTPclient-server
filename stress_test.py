@@ -66,8 +66,7 @@ def main():
     if error_count_reading == 0:
         print("test successful")
     else:
-        print(
-            f"something went wrong: {error_count_reading} files not match the expectation")
+        print(f"something went wrong: {error_count_reading} files not match the expectation")
 
 
 if __name__ == '__main__':
