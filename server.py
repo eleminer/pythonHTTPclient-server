@@ -10,7 +10,7 @@ def root_get_handle(file_number):
             with open(f"{file_number}.txt", "r") as f:
                 return f.read()
         except IOError:
-            return 'file not found!', 400
+            return 'file not found!', 404
     else:
         return 'bad request!', 400
 
