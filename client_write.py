@@ -1,27 +1,13 @@
 import requests
 
-print("client software... user:"+IdInput)
-StringInput = input('String:')
-if RepresentsInt(IdInput):
+user_id = input('user_id:')
+user_data = input('user_data:')
+if user_id.isdigit():
     url = 'http://182.0.0.111/'
-    payload = {'data': StringInput}
     try:
-        req = requests.get(url+IdInput, params=payload)
-        if req.status_code == 200:
-            if str(req.content) == "b'File not found'":
-                print("File not found")
-            elif str(req.content) == "b'userId is not numeric'":
-                print("UserId is not numeric")
-            elif str(req.content) == "b'parameter missing'":
-                print("Parameter missing")
-            elif str(req.content) == "b''":
-                pass
-            else:
-                content = str(req.text)
-                print(content)
-        else:
-            print("something went wrong")
+        req = requests.post(f"{url}{user_id}", headers = {"user_data": str(user_data)})
+        print(str(req.text))
     except:
         print("server not reachable")
 else:
-    print("Input not correct")
+    print("input not correct")

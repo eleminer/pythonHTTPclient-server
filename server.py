@@ -17,11 +17,13 @@ def root_get_handle(file_number):
 @app.route('/<user_id>', methods=['POST'])
 def root_post_handle(user_id):
     user_data = request.headers.get('user_data')
-
     if user_data is not None and user_id.isdigit():
-        with open(f"{user_id}.txt", "a") as f:
-            f.write(f"{user_data}\n")
-        return 'ok'
+        try:
+            with open(f"{user_id}.txt", "a") as f:
+                f.write(f"{user_data}\n")
+            return 'success'
+        except IOError:
+            return 'service unavailable', 503
     else:
         return 'bad request', 400
 
