@@ -11,7 +11,7 @@ Der Server loggt die Nachrichten in einem File.
 Jedem Client ist ein eigenes File zugeordnet, dem eine neue Zeile hinzugefügt wird, sobald eine Nachricht ankommt.
 
 ### Clients (Strings empfangen)
-Ein weiterer Client kann die Files anfragen.
+Ein weiterer Client kann die Files anfragen. (GET)
  
 ## Info
 Erstmal nur normales (unverschlüsseltes) HTTP.
