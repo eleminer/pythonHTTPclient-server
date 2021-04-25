@@ -1,3 +1,4 @@
+url = 'http://182.0.0.111'
 from time import sleep
 from multiprocessing import Process, Pool
 from concurrent.futures import ThreadPoolExecutor
@@ -6,7 +7,6 @@ from random import randint
 from client_read import sending_get
 from client_write import sending_post
 error_count_reading = 0
-url = 'http://182.0.0.111'
 
 
 def multithreading(func, args, workers):

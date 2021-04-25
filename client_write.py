@@ -1,6 +1,6 @@
+url = 'http://182.0.0.111'
 import requests
 from time import sleep
-url = 'http://182.0.0.111'
 
 
 def sending_post(user_id, user_data):
