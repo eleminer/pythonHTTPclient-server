@@ -11,15 +11,15 @@ def sending_get(file_number):
                 return(req.content)
             except requests.exceptions.Timeout:
                 if retryNumber >= 5-1:
-                    return("timeout")
+                    return(b'timeout\n')
                 else:
                     sleep(1)
             except requests.ConnectionError:
-                return("connection error")
+                return(b'connection error')
             except:
-                return("unspecified error")
+                return(b'unspecified error')
     else:
-        return("input not correct")
+        return(b'input not correct')
 
 
 def client_read():
