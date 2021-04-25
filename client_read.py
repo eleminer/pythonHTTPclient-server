@@ -8,29 +8,24 @@ def sending_get(file_number):
         for retryNumber in range(5):
             try:
                 req = requests.get(f"{url}/{file_number}", timeout=3)
-                print(req.text)
-                return str(req.content)
+                return(str(req.content))
             except requests.exceptions.Timeout:
-                print("timeout")
                 if retryNumber >= 5-1:
                     return("timeout")
                 else:
-                    print("try again...")
                     sleep(1)
             except requests.ConnectionError:
-                print("connection error")
                 return("connection error")
             except:
-                print("unspecified error")
                 return("unspecified error")
     else:
-        print("input not correct")
         return("input not correct")
 
 
 def client_read():
     file_number = input('file number:')
-    sending_get(file_number)
+    content = sending_get(file_number)
+    print(content)
 
 
 if __name__ == "__main__":
