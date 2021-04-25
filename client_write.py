@@ -12,7 +12,6 @@ def sending_post(user_id, user_data):
             try:
                 req = requests.post(f"{url}/{user_id}", data={"user_data": str(user_data)}, timeout=3)
                 return(str(req.text))
-                break
             except requests.exceptions.Timeout:
                 print("timeout")
                 if retryNumber >= 5-1:
