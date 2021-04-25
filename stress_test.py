@@ -26,8 +26,8 @@ def write_data(user_id):
 def read_data(user_id):
     global error_count_reading
     content = sending_get(str(user_id))
-    print(content)
-    if content == str(b'0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n'):
+    print(str(content))
+    if str(content) == str(b'0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n'):
         print("pass")
     else:
         print("missing data")

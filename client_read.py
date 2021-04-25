@@ -8,7 +8,7 @@ def sending_get(file_number):
         for retryNumber in range(5):
             try:
                 req = requests.get(f"{url}/{file_number}", timeout=3)
-                return(str(req.content))
+                return(req.content)
             except requests.exceptions.Timeout:
                 if retryNumber >= 5-1:
                     return("timeout")
@@ -25,7 +25,7 @@ def sending_get(file_number):
 def client_read():
     file_number = input('file number:')
     content = sending_get(file_number)
-    print(content)
+    print(content.decode('ascii'))
 
 
 if __name__ == "__main__":
