@@ -24,6 +24,7 @@ def sending_get(file_number):
                 print("unspecified error")
                 return("unspecified error")
     else:
+        print("input not correct")
         return("input not correct")
 
 

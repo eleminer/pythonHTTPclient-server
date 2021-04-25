@@ -9,13 +9,13 @@ def sending_post(user_id, user_data):
             try:
                 req = requests.post(f"{url}/{user_id}", data={"user_data": str(user_data)}, timeout=3)
                 print(req.text)
-                return(str(req.text))
+                return(str(req.content))
             except requests.exceptions.Timeout:
                 print("timeout")
                 if retryNumber >= 5-1:
                     return("timeout")
                 else:
-                    print("timeout, try again...")
+                    print("try again...")
                     sleep(1)
             except requests.ConnectionError:
                 print("connection error")
@@ -25,6 +25,7 @@ def sending_post(user_id, user_data):
                 return("unspecified error")
     else:
         print("input not correct")
+        return("input not correct")
 
 
 def client_write():
@@ -32,6 +33,6 @@ def client_write():
     user_data = input('user_data:')
     sending_post(user_id, user_data)
 
-    
+
 if __name__ == "__main__":
     client_write()
