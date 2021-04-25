@@ -7,7 +7,7 @@ if file_number.isdigit():
     for retryNumber in range(5):
         try:
             req = requests.get(f"{url}/{file_number}", timeout=3)
-            print(str(req.content))
+            print(str(req.text))
             break
         except requests.exceptions.Timeout:
             print("timeout")
