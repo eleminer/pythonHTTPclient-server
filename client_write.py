@@ -2,9 +2,6 @@ import requests
 from time import sleep
 url = 'http://182.0.0.111'
 
-user_id = input('user_id:')
-user_data = input('user_data:')
-
 
 def sending_post(user_id, user_data):
     if user_id.isdigit():
@@ -30,5 +27,11 @@ def sending_post(user_id, user_data):
         print("input not correct")
 
 
-if __name__ == "__main__":
+def client_write():
+    user_id = input('user_id:')
+    user_data = input('user_data:')
     sending_post(user_id, user_data)
+
+    
+if __name__ == "__main__":
+    client_write()

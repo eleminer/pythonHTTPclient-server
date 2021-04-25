@@ -2,8 +2,6 @@ import requests
 from time import sleep
 url = 'http://182.0.0.111'
 
-file_number = input('file number:')
-
 
 def sending_get(file_number):
     if file_number.isdigit():
@@ -29,5 +27,10 @@ def sending_get(file_number):
         return("input not correct")
 
 
-if __name__ == "__main__":
+def client_read():
+    file_number = input('file number:')
     sending_get(file_number)
+
+
+if __name__ == "__main__":
+    client_read()
