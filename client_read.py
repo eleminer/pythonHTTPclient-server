@@ -10,6 +10,7 @@ def sending_get(file_number):
         for retryNumber in range(5):
             try:
                 req = requests.get(f"{url}/{file_number}", timeout=3)
+                print(req.text)
                 return str(req.content)
             except requests.exceptions.Timeout:
                 print("timeout")
@@ -19,8 +20,10 @@ def sending_get(file_number):
                     print("try again...")
                     sleep(1)
             except requests.ConnectionError:
+                print("connection error")
                 return("connection error")
             except:
+                print("unspecified error")
                 return("unspecified error")
     else:
         return("input not correct")
