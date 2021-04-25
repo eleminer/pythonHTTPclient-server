@@ -9,10 +9,9 @@ url = 'http://182.0.0.111/'
 
 
 def sending_post(user_id, user_data):
-    global url
     if user_id.isdigit():
         try:
-            req = requests.post(f"{url}{user_id}", headers={"user_data": str(user_data)})
+            req = requests.post(f"{url}/{user_id}", data={"user_data": str(user_data)})
             print(str(req.text))
         except:
             print("server not reachable")
@@ -21,10 +20,9 @@ def sending_post(user_id, user_data):
 
 
 def sending_get(file_number):
-    global url
     if file_number.isdigit():
         try:
-            req = requests.get(f"{url}{file_number}")
+            req = requests.get(f"{url}/{file_number}")
             return str(req.content)
         except:
             return("server not reachable")

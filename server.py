@@ -19,19 +19,14 @@ def root_get_handle(file_number):
 def root_post_handle(user_id):
     user_data = request.headers.get('user_data')
     if user_data is not None and user_id.isdigit():
-        count = 0
-        maxTries = 10
-        while True:
+        for retryNumber in range(10):
             try:
                 with open(f"{user_id}.txt", "a") as f:
                     f.write(f"{user_data}\n")
                 return 'success'
             except IOError:
-                if count >= maxTries:
-                    return 'service unavailable', 503
-                else:
-                    count += 1
                     sleep(0.10)
+        return 'service unavailable', 503
     else:
         return 'bad request', 400
 
