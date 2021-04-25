@@ -4,54 +4,10 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 from array import array
 from random import randint
+from client_read import sending_get
+from client_write import sending_post
 error_count_reading = 0
 url = 'http://182.0.0.111'
-
-
-def sending_post(user_id, user_data):
-    if user_id.isdigit():
-        for retryNumber in range(5):
-            try:
-                req = requests.post(f"{url}/{user_id}", data={"user_data": str(user_data)}, timeout=3)
-                print(str(req.text))
-                break
-            except requests.exceptions.Timeout:
-                print("timeout")
-                if retryNumber >= 5-1:
-                    print("timeout")
-                    break
-                else:
-                    print("timeout, try again...")
-                    sleep(1)
-            except requests.ConnectionError:
-                print("connection error")
-                break
-            except:
-                print("unspecified error")
-                break
-    else:
-        print("input not correct")
-
-
-def sending_get(file_number):
-    if file_number.isdigit():
-        for retryNumber in range(5):
-            try:
-                req = requests.get(f"{url}/{file_number}", timeout=3)
-                return str(req.content)
-            except requests.exceptions.Timeout:
-                print("timeout")
-                if retryNumber >= 5-1:
-                    return("timeout")
-                else:
-                    print("try again...")
-                    sleep(1)
-            except requests.ConnectionError:
-                return("connection error")
-            except:
-                return("unspecified error")
-    else:
-        return("input not correct")
 
 
 def multithreading(func, args, workers):
