@@ -11,7 +11,7 @@ def sending_post(user_id, user_data):
                 return(req.content)
             except requests.exceptions.Timeout:
                 if retryNumber >= 5-1:
-                    return(b'timeout\n')
+                    return(b'timeout')
                 else:
                     sleep(1)
             except requests.ConnectionError:
