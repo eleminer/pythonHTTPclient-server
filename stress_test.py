@@ -2,7 +2,6 @@ from time import sleep
 from multiprocessing import Process, Pool
 from concurrent.futures import ThreadPoolExecutor
 import requests
-from array import array
 from random import randint
 from client_read import sending_get
 from client_write import sending_post
