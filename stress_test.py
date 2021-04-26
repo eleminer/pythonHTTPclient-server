@@ -1,30 +1,29 @@
-url = 'http://182.0.0.111'
 from time import sleep
-from multiprocessing import Process, Pool
 from concurrent.futures import ThreadPoolExecutor
-import requests
 from random import randint
-from client_read import sending_get
-from client_write import sending_post
+from client_read import get_file_from_server
+from client_write import post_text_to_server
+
 error_count_reading = 0
 
+url = "http://127.0.0.1/"
 
-def multithreading(func, args, workers):
-    with ThreadPoolExecutor(workers) as ex:
+def multithreading(func, args, workersCount):
+    with ThreadPoolExecutor(workersCount) as ex:
         ex.map(func, args)
 
 
 def write_data(user_id):
     sleep(randint(1, 10))
     for i in range(10):
-        sending_post(str(user_id), str(i))
+        post_text_to_server(str(user_id), str(i))
         print(f"ID:{user_id}Data:{str(i)}")
         sleep(1)
 
 
 def read_data(user_id):
     global error_count_reading
-    content = sending_get(str(user_id))
+    content = get_file_from_server(str(user_id))
     print(str(content))
     if str(content) == str(b'0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n'):
         print("pass")
